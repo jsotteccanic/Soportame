@@ -47,8 +47,8 @@ function crearUsuario(req, res) {
 }
 function login(req, res) {
     var params = req.query;
-    var c_usuario = req.usuario;
-    var password =  req.password;
+    var c_usuario = params.usuario;
+    var password =  params.password;
 
     Usuario.find({usuario: c_usuario},function(err, resData){
         if(err){
@@ -58,7 +58,7 @@ function login(req, res) {
             if(!resData){
                 res.status(404).send({mensaje:'El usuario no existe'});
             }else{
-                bcrypt.compare(password,resData.password, function(err, check){
+                bcrypt.compare(password,resData[0].password, function(err, check){
                     if(check){
                         if(params.gethash){
                             res.status(200).send({
