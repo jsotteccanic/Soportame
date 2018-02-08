@@ -62,7 +62,7 @@ function login(req, res) {
                     if(check){
                         if(params.gethash){
                             res.status(200).send({
-                                token:jwt.crearToken(resData)
+                                token:jwt.crearToken(resData[0])
                             });
                         }else{
                             res.status(200).send({resData});
