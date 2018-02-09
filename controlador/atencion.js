@@ -1,5 +1,9 @@
 var Atencion = require('../modelo/atencion');
-
+function test(req, res){
+    res.status(200).send({
+        mensaje:'Servicio de atención funcionando'
+    });
+}
 function registrarAtencion(req, res) {
     data = req.query;
     var ticket = new Atencion();
@@ -21,5 +25,9 @@ function registrarAtencion(req, res) {
             }
         }
     })
+}
 
+module.exports ={
+    test,
+    registrarAtencion
 }

@@ -77,12 +77,9 @@ function login(req, res) {
     });
 }
 
-function listarUsuario(req,res){
-    
-}
+
 module.exports = {
     test,
     login,
-    crearUsuario,
-    listarUsuario
+    crearUsuario
 }
