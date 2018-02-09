@@ -6,7 +6,6 @@ function listarColaboradores(req, res) {
             res.status(500).send({ mensaje: 'Error al realizar la consulta' });
         } else {
             res.status(200).send({
-                mensaje: 'Se registro correctamente',
                 Colaborador: result
             });
         }
@@ -14,7 +13,7 @@ function listarColaboradores(req, res) {
 
 }
 function registrarColaborador(req, res) {
-    var nColaborador = Colaborador();
+    nColaborador = new Colaborador();
     var params = req.query;
     nColaborador.dni = params.dni;
     nColaborador.nombres = params.nombres;
