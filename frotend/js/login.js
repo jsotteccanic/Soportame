@@ -1,21 +1,18 @@
-
+'use strict'
 function iniciarsession() {
     valores = $("#loginForm").form('get values');
+    valores.gethash =true;
     $.ajax({
-        url: 'php/enrutador.php?type=1',
+        url: ruta+'/usuario/login',
         type: 'post',
         data: valores,
         success: function (r) {
-            data = JSON.parse(r);
-            if (data['msg'] != '1') {
-                $("#msg").empty();
-                $("#msg").html(data['msg']).show('slow').delay(1000).hide(400);
-                $(":text, :password").val('');
-                $(":text").focus();
-            } else {
-                location.href = 'usuario.html';
-            }
-
+            debugger;
+            sessionStorage.setItem('sesion',r.token);         
+            window.location = 'http://192.168.0.12:9090/usuario.html';
+        },
+        error:function(res){
+           alert(res.responseJSON.mensaje);
         }
     });
 }
