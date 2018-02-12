@@ -1,5 +1,4 @@
 'use strict'
-
 var mongoose = require('mongoose');
 var modelo = mongoose.Schema;
 
@@ -8,7 +7,8 @@ var modeloColaborador = modelo({
     nombres: String,
     apellidos: String,
     area: String,
-    cargo: String
+    cargo: String,
+    sede: String
 });
 
 module.exports = mongoose.model('Colaborador', modeloColaborador);
