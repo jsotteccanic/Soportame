@@ -1,7 +1,9 @@
 
 var usuario;
 var tiempo;
+
 (function () {
+    document.body.webkitRequestFullscreen();
 $.ajax({
         url: 'php/enrutador.php?type=2',
         type: 'post',
@@ -44,6 +46,7 @@ $.ajax({
 })();
 
 function mostrarModal() {
+    $("#modal").modal('show');
     $.ajax({
         url: 'php/enrutador.php?type=7',
         type: 'post',
@@ -53,15 +56,7 @@ function mostrarModal() {
             $("#modal").modal('show');
         }
     });
-    // date = new Date();
-    // tiempo = date.getFullYear()+"-"+date.getUTCMonth()+"-"+date.getUTCDate()+" "+date.getUTCHours()+"-"+date.getUTCMinutes()+"-"+date.getUTCSeconds();
-    // // tiempo = date.getUTCFullYear() + '-' +
-    // //     ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
-    // //     ('00' + date.getUTCDate()).slice(-2) + ' ' +
-    // //     ('00' + date.getHours()).slice(-2) + ':' +
-    // //     ('00' + date.getMinutes()).slice(-2) + ':' +
-    // //     ('00' + date.getSeconds()).slice(-2);
-    // console.log(tiempo);
+
     
 
 }

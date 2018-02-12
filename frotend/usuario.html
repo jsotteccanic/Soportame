@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <script src="js/jquery-3.1.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/icon.png">
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/semantic.js"></script>
     <link rel="stylesheet" href="css/semantic.min.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/usuario.css">
-    <title><i class="privacy icon"></i>Soportame!</title>
+    <title>
+        <i class="privacy icon"></i>Soportame!</title>
 </head>
 
 <body>
@@ -29,13 +34,13 @@
                     <div class="two fields">
                         <div class="field">
                             <label for="dni">USUARIO:</label>
-                            <select class="ui search dropdown" type="text" id="dni" name="dni" ></select>
+                            <select class="ui search dropdown" type="text" id="dni" name="dni"></select>
                         </div>
                         <div class="field">
                             <label for="tipoAtecion">TIPO ATENCION:</label>
                             <select class="ui search dropdown" name="tipoAtencion" id="tipoAtencion">
-                                    <option value="">Seleccione</option>
-                                </select>
+                                <option value="">Seleccione</option>
+                            </select>
                         </div>
                         <div class="field">
                             <label for="detalle">DETALE:</label>
@@ -45,7 +50,7 @@
                 </div>
             </div>
             <div class="actions">
-                <div class="ui red basic cancel inverted button" >
+                <div class="ui red basic cancel inverted button">
                     <i class="remove icon"></i> No
                 </div>
                 <div class="ui green ok inverted button" onclick="atender()">

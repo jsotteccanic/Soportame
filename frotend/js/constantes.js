@@ -1,1 +1,1 @@
-ruta = 'http://localhost:80';
+ruta = 'http://192.168.0.12:80';

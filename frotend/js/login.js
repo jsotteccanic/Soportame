@@ -1,4 +1,4 @@
-'use strict'
+
 function iniciarsession() {
     valores = $("#loginForm").form('get values');
     valores.gethash =true;
@@ -7,12 +7,17 @@ function iniciarsession() {
         type: 'post',
         data: valores,
         success: function (r) {
-            debugger;
             sessionStorage.setItem('sesion',r.token);         
-            window.location = 'http://192.168.0.12:9090/usuario.html';
+            location.replace("http://192.168.0.12:9090/usuario.html");
+            
         },
         error:function(res){
            alert(res.responseJSON.mensaje);
         }
     });
 }
+// function redireccion(){
+//     window.location='http://192.168.0.12:9090/usuario.html';
+//     window.location.href='http://192.168.0.12:9090/usuario.html';
+//     location.replace("http://192.168.0.12:9090/usuario.html");
+// }

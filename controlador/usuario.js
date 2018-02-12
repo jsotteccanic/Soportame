@@ -48,6 +48,7 @@ function crearUsuario(req, res) {
 
 function login(req, res) {
     // var params = req.query;
+    console.log('alguien esta ingresando');
     var params = req.body;
     var c_usuario = params.usuario;
     var password = params.password;
