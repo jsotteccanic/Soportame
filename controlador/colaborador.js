@@ -6,7 +6,7 @@ function listarColaboradores(req, res) {
             res.status(500).send({ mensaje: 'Error al realizar la consulta' });
         } else {
             res.status(200).send({
-                Colaborador: result
+                colaborador: result
             });
         }
     });
