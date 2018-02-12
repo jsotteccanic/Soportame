@@ -11,4 +11,4 @@ var modeloColaborador = modelo({
     sede: String
 });
 
-module.exports = mongoose.model('Colaborador', modeloColaborador);
+module.exports = mongoose.model('Colaborador', modeloColaborador,'Colaborador');

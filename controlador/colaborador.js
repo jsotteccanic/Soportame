@@ -20,6 +20,8 @@ function registrarColaborador(req, res) {
     nColaborador.apellidos = params.apellidos;
     nColaborador.area = params.area;
     nColaborador.cargo = params.cargo;
+    nColaborador.sede = params.sede;
+
 
     nColaborador.save(function (err, colaborador) {
         if (err) {
