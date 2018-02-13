@@ -1,49 +1,43 @@
 
 var usuario;
 var tiempo;
-
-(function () {
-    document.body.webkitRequestFullscreen();
-$.ajax({
-        url: 'php/enrutador.php?type=2',
-        type: 'post',
-        success: function (r) {
-            datos = JSON.parse(r);
-            console.log(datos);
-            if (datos == '0') {
-                location.href = 'login.html';
-            }
-        }
-    });
-    // traer usuario
+obtenerColaboradores();
+obtenerTipoAtencion();
+window.onbeforeunload = function () {
+    var rpt = confirm('Esta seguro de querer salir?');
+    if(rpt){
+        sessionStorage.clear();
+    }
+    
+};
+function obtenerColaboradores() {
     $.ajax({
-        url: 'php/enrutador.php?type=5',
-        type: 'post',
+        url: ruta + 'colaborador/listarColaboradores',
+        type: 'get',
         success: function (r) {
-            datos = JSON.parse(r);
+            r = r.colaborador;
             $('#dni').empty();
             $('#dni').append('<option value="">Seleccione</option>');
-            for (i = 0; i < datos.length; i++) {
-                $('#dni').append("<option value='" + datos[i]['id_cliente'] + "'>" + datos[i]['nom_cliente'] + "<option>");
+            for (i = 0; i < r.length; i++) {
+                $('#dni').append("<option value='" + r[i]['dni'] + "'>" + r[i]['nombres'] + ' ' + r[i]['apellidos'] + "<option>");
             }
             $('#dni').dropdown();
+        },
+        error: function (res) {
+            console.log(res.responseJSON.mensaje);
         }
     });
-    //Traer tipo
-    $.ajax({
-        url: 'php/enrutador.php?type=6',
-        type: 'post',
-        success: function (r) {
-            datos = JSON.parse(r);
-            $('#tipoAtencion').empty();
-            $('#tipoAtencion').append('<option value="">Seleccione</option>');
-            for (i = 0; i < datos.length; i++) {
-                $('#tipoAtencion').append("<option value='" + datos[i]['id_tipo'] + "'>" + datos[i]['nombre'] + "<option>");
-            }
-            $('#tipoAtencion').dropdown();
-        }
-    });
-})();
+}
+function obtenerTipoAtencion() {
+debugger;
+    $('#tipoAtencion').empty();
+    $('#tipoAtencion').append('<option value="">Seleccione</option>');
+    for (i = 0; i < tipoAtencion.length; i++) {
+        $('#tipoAtencion').append("<option value='" + tipoAtencion[i] + "'>" + tipoAtencion[i] + "<option>");
+    }
+    $('#tipoAtencion').dropdown();
+
+}
 
 function mostrarModal() {
     $("#modal").modal('show');
@@ -52,12 +46,12 @@ function mostrarModal() {
         type: 'post',
         success: function (r) {
             datos = JSON.parse(r);
-            tiempo= datos[0]['fecha'];
+            tiempo = datos[0]['fecha'];
             $("#modal").modal('show');
         }
     });
 
-    
+
 
 }
 function atender() {

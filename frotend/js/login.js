@@ -3,7 +3,7 @@ function iniciarsession() {
     valores = $("#loginForm").form('get values');
     valores.gethash =true;
     $.ajax({
-        url: ruta+'/usuario/login',
+        url: ruta+'usuario/login',
         type: 'post',
         data: valores,
         success: function (r) {

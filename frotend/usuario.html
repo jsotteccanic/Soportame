@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="css/semantic.min.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/usuario.css">
+    <script src="js/constantes.js"></script>
+    <script>
+        function verficarSesion() {
+            if (!sessionStorage.getItem('sesion')) {
+                location.replace(local + "login.html");
+            }
+
+        }
+        verficarSesion();
+    </script>
     <title>
         <i class="privacy icon"></i>Soportame!</title>
 </head>
