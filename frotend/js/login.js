@@ -9,6 +9,7 @@ function iniciarsession() {
         success: function (r) {
             sessionStorage.setItem('sesion',r.token);         
             location.replace("http://192.168.0.12:9090/usuario.html");
+            location.replace("http://192.168.0.12:9090/usuario.html");
             
         },
         error:function(res){

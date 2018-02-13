@@ -10,4 +10,4 @@ var modeloUsuario = modelo({
     rol:String
 });
 
-module.exports = mongoose.model('Usuario', modeloUsuario);
+module.exports = mongoose.model('Usuario', modeloUsuario, 'Usuario');

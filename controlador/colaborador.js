@@ -6,7 +6,7 @@ function listarColaboradores(req, res) {
             res.status(500).send({ mensaje: 'Error al realizar la consulta' });
         } else {
             res.status(200).send({
-                Colaborador: result
+                colaborador: result
             });
         }
     });
@@ -20,6 +20,8 @@ function registrarColaborador(req, res) {
     nColaborador.apellidos = params.apellidos;
     nColaborador.area = params.area;
     nColaborador.cargo = params.cargo;
+    nColaborador.sede = params.sede;
+
 
     nColaborador.save(function (err, colaborador) {
         if (err) {

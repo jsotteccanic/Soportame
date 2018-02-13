@@ -11,4 +11,4 @@ var modeloAtencion = modelo({
     usuario: {type: modelo.ObjectId, ref:'Usuario'}
 });
 
-module.exports = mongoose.model('Atencion', modeloAtencion);
+module.exports = mongoose.model('Atencion', modeloAtencion,'Atencion');
