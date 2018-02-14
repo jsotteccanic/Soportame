@@ -8,12 +8,13 @@ function registrarAtencion(req, res) {
     data = req.query;
     var ticket = new Atencion();
     ticket.tipoAtencion = data.tipoAtencion;
-    ticket.fecha = data.fecha;
+    ticket.fecha_inicio = new Date(data.fecha_inicio);
+    ticket.fecha_fin = new Date(data.fecha_fin);
     ticket.descripcion = data.descripcion;
     ticket.colaborador = data.colaborador;
     ticket.usuario = data.usuario;
 
-    data.save(function (err, res) {
+    ticket.save(function (err, res) {
         if (err) {
             res.status(500).send({ mensaje: 'Error al crear la atención' });
         } else {

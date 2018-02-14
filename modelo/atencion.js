@@ -5,7 +5,8 @@ var modelo = mongoose.Schema;
 
 var modeloAtencion = modelo({
     tipoAtencion: String,
-    fecha: Date,
+    fecha_inicio: Date,
+    fecha_fin: Date,
     descripcion: String,
     colaborador: {type: modelo.ObjectId, ref:'Colaborador'},
     usuario: {type: modelo.ObjectId, ref:'Usuario'}
