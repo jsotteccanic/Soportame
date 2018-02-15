@@ -29,8 +29,20 @@ function registrarAtencion(req, res) {
         }
     })
 }
+function listarAtenciones(req, res) {
+    Atencion.find({},function (err, result) {
+        if (err) {
+            res.status(500).send({ mensaje: 'Error al realizar la consulta' });
+        } else {
+            res.status(200).send({
+                atencion: result
+            });
+        }
+    });
 
+}
 module.exports ={
     test,
-    registrarAtencion
+    registrarAtencion,
+    listarAtenciones
 }
