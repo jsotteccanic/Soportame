@@ -9,7 +9,7 @@ var modeloAtencion = modelo({
     fecha_fin: Date,
     descripcion: String,
     colaborador: {type: modelo.ObjectId, ref:'Colaborador'},
-    usuario: {type: modelo.ObjectId, ref:'Usuario'}
+    usuario: {type: modelo.ObjectId, ref:'Colaborador'}
 });
 
 module.exports = mongoose.model('Atencion', modeloAtencion,'Atencion');

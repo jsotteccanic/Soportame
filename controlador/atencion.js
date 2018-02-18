@@ -30,7 +30,7 @@ function registrarAtencion(req, res) {
     })
 }
 function listarAtenciones(req, res) {
-    Atencion.find({},function (err, result) {
+    Atencion.find({colaborador:req.user.colaborador,fecha_fin : { "$exists" : false }}).populate('colaborador').populate('usuario').exec(function (err, result) {
         if (err) {
             res.status(500).send({ mensaje: 'Error al realizar la consulta' });
         } else {
@@ -41,8 +41,25 @@ function listarAtenciones(req, res) {
     });
 
 }
+
+function cerrarAtencion(req,res){
+    var catencion = new Atencion();
+    var atencionId = req.params.id;
+    Atencion.findByIdAndUpdate(atencionId,{fecha_fin:new Date()},function(err,itemActualizado){
+        if(err){
+            res.status(500).send({mensaje:'Error al actualizar la atención'});
+        }else{
+            if(!itemActualizado){
+                res.status(404).send({mensaje:'No se pudo actualizar la atención'});
+            }else{
+                res.status(404).send({mensaje:'se actualizó correctamente'});
+            }
+        }
+    });
+}
 module.exports ={
     test,
     registrarAtencion,
-    listarAtenciones
+    listarAtenciones,
+    cerrarAtencion
 }
