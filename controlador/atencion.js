@@ -1,4 +1,5 @@
 var Atencion = require('../modelo/atencion');
+var mongoose = require('mongoose');
 function test(req, res){
     res.status(200).send({
         mensaje:'Servicio de atención funcionando'
@@ -15,6 +16,7 @@ function registrarAtencion(req, res) {
     ticket.descripcion = data.descripcion;
     ticket.colaborador = data.colaborador;
     ticket.usuario = req.user.colaborador;
+    ticket.abierto = true;
 
     ticket.save(function (err, regTicket) {
         if (err) {
@@ -30,7 +32,8 @@ function registrarAtencion(req, res) {
     })
 }
 function listarAtenciones(req, res) {
-    Atencion.find({colaborador:req.user.colaborador,fecha_fin : { "$exists" : false }}).populate('colaborador').populate('usuario').exec(function (err, result) {
+    var id = mongoose.Types.ObjectId(req.user.colaborador);
+    Atencion.find({usuario :id,abierto:true}).populate('colaborador').populate('usuario').exec(function (err, result) {
         if (err) {
             res.status(500).send({ mensaje: 'Error al realizar la consulta' });
         } else {
@@ -45,14 +48,14 @@ function listarAtenciones(req, res) {
 function cerrarAtencion(req,res){
     var catencion = new Atencion();
     var atencionId = req.params.id;
-    Atencion.findByIdAndUpdate(atencionId,{fecha_fin:new Date()},function(err,itemActualizado){
+    Atencion.findByIdAndUpdate(atencionId,{fecha_fin:new Date(),abierto:false},function(err,itemActualizado){
         if(err){
             res.status(500).send({mensaje:'Error al actualizar la atención'});
         }else{
             if(!itemActualizado){
                 res.status(404).send({mensaje:'No se pudo actualizar la atención'});
             }else{
-                res.status(404).send({mensaje:'se actualizó correctamente'});
+                res.status(200).send({mensaje:'se actualizó correctamente'});
             }
         }
     });
