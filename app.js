@@ -2,13 +2,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+
+
 var app = express();
+//Interprete correctamente la ruta y que parsee  a json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+//lista de routers
 var r_usuario = require('./router/usuario');
 var r_colaborador = require('./router/colaborador');
 var r_atencion = require('./router/atencion');
-//Interprete correctamente la ruta y que parsee  a json
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
 
 //configurar header
 app.use(function(req,res,next){

@@ -50,10 +50,11 @@ function login(req, res) {
     // var params = req.query;
     console.log('alguien esta ingresando');
     var params = req.body;
+    // var params = req.query;
     var c_usuario = params.usuario;
     var password = params.password;
 
-    Usuario.find({ usuario: c_usuario }, function (err, resData) {
+    Usuario.find({usuario: c_usuario }, function (err, resData) {
         if (err) {
             res.status(500).send({ mensaje: 'Error en la petición' });
         } else {

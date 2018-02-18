@@ -5,16 +5,16 @@ function test(req, res){
     });
 }
 function registrarAtencion(req, res) {
-    data = req.query;
+    data = req.body;
     var ticket = new Atencion();
     ticket.tipoAtencion = data.tipoAtencion;
-    ticket.fecha_inicio = new Date(data.fecha_inicio);
+    ticket.fecha_inicio = new Date();
     if(data.fecha_fin){
         ticket.fecha_fin = new Date(data.fecha_fin);
     }    
     ticket.descripcion = data.descripcion;
     ticket.colaborador = data.colaborador;
-    ticket.usuario = data.usuario;
+    ticket.usuario = req.user.colaborador;
 
     ticket.save(function (err, regTicket) {
         if (err) {
