@@ -51,7 +51,7 @@ function login(req, res) {
     console.log('alguien esta ingresando');
     var params = req.body;
     // var params = req.query;
-    var c_usuario = params.usuario;
+    var c_usuario = params.usuario.toLowerCase();
     var password = params.password;
 
     Usuario.find({usuario: c_usuario }, function (err, resData) {
