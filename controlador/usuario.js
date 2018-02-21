@@ -36,7 +36,6 @@ function crearUsuario(req, res) {
                         }
                     }
                 });
-                res.status(200)
             } else {
                 res.status(200).send({ mensaje: 'Rellena todos los campos' });
             }
@@ -49,7 +48,7 @@ function crearUsuario(req, res) {
 function login(req, res) {
     // var params = req.query;
     console.log('alguien esta ingresando');
-    var params = req.body;
+    var params = req.query;
     // var params = req.query;
     var c_usuario = params.usuario;
     var password = params.password;
